@@ -1,6 +1,6 @@
 export default async function graphqlRequest(query:any) {
     // GraphQL endpoint URL
-    const url = "http://localhost/blogswebsite/wordpress/graphql";
+    const url = "https://wordpress-headless-with-nextjs.000webhostapp.com/graphql";
   
     // Headers for the request
     const headers:any = { 'Content-Type': 'application/json' };

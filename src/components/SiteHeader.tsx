@@ -35,7 +35,7 @@ export default function SiteHeader({ className, pageData}: any) {
                     {/* {pageData.map((post)( */}
                     <li>                    
                         {/* <Link href={`/about/${post?.slug}`}>About</Link> */}
-                        <Link href="/about/about-us">About</Link>
+                        <Link href="/about/about-page">About</Link>
                     </li>
                       {/* ))}  */}
                     <li>
