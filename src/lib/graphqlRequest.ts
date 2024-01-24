@@ -1,9 +1,9 @@
-export default async function graphqlRequest(query) {
+export default async function graphqlRequest(query:any) {
     // GraphQL endpoint URL
     const url = "http://localhost/blogswebsite/wordpress/graphql";
   
     // Headers for the request
-    const headers = { 'Content-Type': 'application/json' };
+    const headers:any = { 'Content-Type': 'application/json' };
   
     // Add authorization header if a refresh token is provided
     if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {

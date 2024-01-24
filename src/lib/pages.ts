@@ -19,7 +19,7 @@ export async function getPageSlugs() {
   return slugs;
 }
 
-export async function getSinglePage(slug) {
+export async function getSinglePage(slug:any) {
   const query = {
     query: `
       query NewQuery($slug: String!) {
@@ -41,7 +41,7 @@ export async function getSinglePage(slug) {
 
   if (resJson.errors) {
     throw new Error(
-      `GraphQL request failed: ${resJson.errors.map((error) => error.message).join(', ')}`
+      `GraphQL request failed: ${resJson.errors.map((error:any) => error.message).join(', ')}`
     );
   }
 

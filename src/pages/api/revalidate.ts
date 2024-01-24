@@ -1,4 +1,4 @@
-export default async function handler (req, res) {
+export default async function handler ({req, res}:any) {
 
     let slug = req.query.slug;
     let path = '';
@@ -21,7 +21,7 @@ export default async function handler (req, res) {
         await res.revalidate(path);
         return res.json({ revalidated: true });
     }
-    catch (err) {
+    catch (err:any) {
         return res.status(500).send(err.message);
     }
 }

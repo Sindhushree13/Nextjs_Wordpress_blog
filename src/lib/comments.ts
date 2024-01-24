@@ -1,7 +1,7 @@
 
 import graphqlRequest from "./graphqlRequest";
 
-export async function createComment(body) {
+export async function createComment(body:any) {
     const mutation = {
         query: `mutation createComment(
             $author: String = "${body.author}", 
@@ -29,7 +29,7 @@ export async function createComment(body) {
     return resJson;
 }
 
-export async function getComments(slug) {
+export async function getComments(slug:any) {
     const query = {
         query: `query getComments {
             post(id: "${slug}", idType: SLUG) {

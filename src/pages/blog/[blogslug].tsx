@@ -2,16 +2,16 @@ import Head from "next/head";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
 import CommentForm from "../../components/CommentForm";
-import { getPostSlugs, getSinglePost } from "../../../lib/posts";
-import { getComments } from "../../../lib/comments";
+import { getPostSlugs, getSinglePost } from "../../lib/posts";
+import { getComments } from "../../lib/comments";
 import { Rubik, Roboto_Slab } from "next/font/google";
 import Image from "next/image";
-import "../../../styles/main.css";
+import "../../../styles/Home.module.css";
 
 const rubik = Rubik({ subsets: ["latin"], display: "swap" });
 const roboto_slab = Roboto_Slab({ subsets: ["latin"], display: "swap" });
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }:any) {
   const postData = await getSinglePost(params.blogslug);
   const { comments, commentCount } = await getComments(params.blogslug);
 
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   const postSlugs = await getPostSlugs();
 
   return {
-    paths: postSlugs.map((s) => ({
+    paths: postSlugs.map((s:any) => ({
       params: {
         blogslug: s.slug,
       },
@@ -38,11 +38,11 @@ export async function getStaticPaths() {
   };
 }
 
-export default function BlogDetailsPage({ postData, comments, commentCount }) {
+export default function BlogDetailsPage({ postData, comments, commentCount, pageData }:any) {
   return (
     <>
       <section className="bg-pink-900 bg-opacity-70 absolute w-full z-20 ">
-        <SiteHeader className="header-single-post z-10 relative" />
+        <SiteHeader className="header-single-post z-10 relative" pageData={pageData} />
       </section>
       <article className={`${rubik.className} font-light`}>
         <section className="hero-area h-auto py-10 min-h-[30rem] bg-no-repeat bg-cover bg-center relative ">
@@ -83,7 +83,7 @@ export default function BlogDetailsPage({ postData, comments, commentCount }) {
         <section>
           <ul>
             {comments && comments.nodes ? (
-              comments.nodes.map((comment) => (
+              comments.nodes.map((comment:any) => (
                 <li key={comment.id} className="pb-4 border-b">
                   <div className="comment-header flex justify-start items-center">
                     <div className="py-4">

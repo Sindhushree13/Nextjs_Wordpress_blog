@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+export default function handler({req, res}:any) {
     const body = req.body;
 
     if(!body.firstName || !body.email || !body.message) {

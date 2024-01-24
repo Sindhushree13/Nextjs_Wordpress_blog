@@ -2,9 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import {getSinglePage} from "../../lib/pages"
+import {getSinglePage} from "../lib/pages"
+import "../../styles/main.css"
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({params}:any) {
     const pageData = await getSinglePage(params.pageSlug);
 
     return {
@@ -14,7 +15,7 @@ export async function getStaticProps({params}) {
     }
 
 }
-export default function SiteHeader({ className, pageData}) {
+export default function SiteHeader({ className, pageData}: any) {
     // const [posts, setPosts] = useState(pageData);
     return (
         <header className={`${className} container mx-auto lg:max-w-4xl flex items-center justify-between`}>

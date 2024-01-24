@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import "../../styles/main.css"
+import "../../styles/Home.module.css"
 
-export default function CommentForm({postId}) {
+export default function CommentForm({postId}:any) {
 
     const [submitStatus, setSubmitStatus] = useState(false);
     const [responseMessage, setResponseMessage] = useState('');
     const [alertColor, setAlertColor] = useState('');
 
-    const handleSubmit = async function(event) {
+    const handleSubmit = async function(event:any) {
         event.preventDefault();
 
         setSubmitStatus(true);
