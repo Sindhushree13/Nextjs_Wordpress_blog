@@ -1,7 +1,7 @@
 import Head from "next/head";
 import SiteHeader from "../../components/SiteHeader";
 import { useState } from "react";
-import "../../../styles/main.css"
+import "../../../styles/Home.module.css"
 
 export default function Contact() {
 
@@ -9,7 +9,7 @@ export default function Contact() {
     const [responseMessage, setResponseMessage] = useState('');
     const [alertColor, setAlertColor] = useState('bg-green-500');
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event:any) => {
         event.preventDefault();
     
         const data = {
@@ -76,7 +76,7 @@ export default function Contact() {
     );
 }
 
-const SubmissionAlert = ({message, alertColor}) => {
+const SubmissionAlert = ({message, alertColor}:any) => {
     return (
         <div className={`${alertColor} py-2 px-4 mt-4 text-slate-100 rounded-md`}>
             {message}

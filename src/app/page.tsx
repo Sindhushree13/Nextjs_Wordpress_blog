@@ -1,9 +1,10 @@
 import Head from "next/head";
 import SiteHeader from "../components/SiteHeader";
 import Link from "next/link";
+import "../../styles/Home.module.css"
+import { ParsedUrlQuery } from 'querystring';
 
-
-export default function Home({ pageData }) {
+export default function Home() {
     return (
         <>
             <Head>
@@ -23,14 +24,14 @@ export default function Home({ pageData }) {
                             Welcome to{" "}
                             <span className="text-yellow-400">Travel</span> Blog
                         </h1>
-                        {/* <div className="mt-20">
+                        <div className="mt-20">
                             <Link
                                 href="/blog"
                                 className="text-2xl text-slate-100 border-slate-100 border-2 rounded-md py-3 px-4 hover:bg-yellow-300 hover:text-slate-800 hover:border-yellow-300 transition"
                             >
                                 Read Blog
                             </Link>
-                        </div> */}
+                        </div>
                     </div>
                 </main>
             </div>

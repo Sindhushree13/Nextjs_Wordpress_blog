@@ -2,15 +2,15 @@ import graphqlRequest from "./graphqlRequest";
 
 export async function getPostList(endCursor = null, taxonomy = null) {
 
-  let condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}}`;
+  // let condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}}`;
 
-  if(taxonomy) {
-    condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}, ${taxonomy.key}: "${taxonomy.value}"}`;
-  }
+  // if(taxonomy) {
+  //   condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}, ${taxonomy.key}: "${taxonomy.value}"}`;
+  // }
 
     const query = {
         query: `query getAllPosts {
-            posts(${condition}) {
+            posts {
               nodes {
                 date
                 slug
@@ -51,7 +51,7 @@ export async function getPostList(endCursor = null, taxonomy = null) {
     return allPosts;
 }
 
-export async function getSinglePost(slug) {
+export async function getSinglePost(slug:any) {
     const query = {
         query: `query getSinglePost {
             post(id: "${slug}", idType: SLUG) {
@@ -122,7 +122,7 @@ export async function getCategorySlugs() {
   return categories;
 }
 
-export async function getCategoryDetails(categoryName) {
+export async function getCategoryDetails(categoryName:any) {
   const query = {
     query: `query getCategoryDetails {
       category(id: "${categoryName}", idType: SLUG) {

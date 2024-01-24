@@ -2,12 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
-import { getPostList} from "../../../lib/posts";
-// import FeaturedImage from "../components/FeaturedImage";
-// import Date from "../../components/Date";
+import { getPostList} from "../../lib/posts";
 import LoadMore from "../../components/LoadMore";
 import { useState } from "react";
-import "../../../styles/main.css"
+import "../../../styles/Home.module.css"
 
 export async function getStaticProps() {
     const allPosts = await getPostList();
@@ -19,7 +17,7 @@ export async function getStaticProps() {
     }
 }
 
-export default function BlogHome({ allPosts }) {
+export default function BlogHome({ allPosts, pageData}:any) {
 
     const [posts, setPosts] = useState(allPosts);
 
@@ -32,7 +30,7 @@ export default function BlogHome({ allPosts }) {
             <div className="absolute bg-slate-900 inset-0 z-0 opacity-40"></div>
 
             <div className="container lg:max-w-4xl mx-auto">
-                <SiteHeader className="header-blog-home z-10 relative" />
+                <SiteHeader className="header-blog-home z-10 relative" pageData={pageData} />
             </div>
 
             <h1 className="text-6xl text-center text-slate-100 relative z-10 py-8">BLOG</h1>            
@@ -44,7 +42,7 @@ export default function BlogHome({ allPosts }) {
             <section className="container mx-auto lg:max-w-5xl post-list mt-4">
                 <ul>
                     {
-                        posts.nodes.map((post) => (
+                        posts.nodes.map((post:any) => (
                             <li key={post.slug} className="grid grid-cols-5 gap-4 mb-4">
                                 {/* <div className="col-span-2">
                                     <FeaturedImage post={post} />
@@ -59,7 +57,7 @@ export default function BlogHome({ allPosts }) {
                                     <div className="text-lg" dangerouslySetInnerHTML={{ __html: post.excerpt }}></div>
                                     <div className="py-4">
                                         Posted under {
-                                            post.categories.nodes.map((category) => (
+                                            post.categories.nodes.map((category:any) => (
                                                 <Link className="text-blue-400 hover:text-blue-500" href={`/category/${category.slug}`} key={category.slug}>
                                                     {category.name}
                                                 </Link>

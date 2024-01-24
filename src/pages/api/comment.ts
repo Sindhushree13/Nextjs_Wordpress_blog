@@ -1,8 +1,8 @@
-import { createComment } from "../../../lib/comments.js";
+import { createComment } from "../../lib/comments";
 
-export default async function handler(req, res) {
+export default async function handler({req, res}:any) {
 
-    const body = JSON.parse(req.body);
+    const body:any = JSON.parse(req.body);
 
     const resJson = await createComment(body);
 

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
-import { getPageSlugs, getSinglePage } from "../../../lib/pages";
-import "../../../styles/main.css"
+import { getPageSlugs, getSinglePage } from "../../lib/pages";
+import "../../../styles/Home.module.css"
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }:any) {
   try {
     // console.log("Fetching page data for slug:", params.about);
     const pageData = await getSinglePage(params.about);
@@ -39,7 +39,7 @@ export async function getStaticPaths() {
     // console.log("Fetched pageSlugs:", pageSlugs);
 
     return {
-      paths: pageSlugs.map((s) => ({
+      paths: pageSlugs.map((s:any) => ({
         params: {
           about: s.slug,
         },
@@ -52,7 +52,7 @@ export async function getStaticPaths() {
   }
 }
 
-export default function Page({ pageData, isFallback }) {
+export default function Page({ pageData, isFallback }:any) {
 //   console.log('Page Data:', pageData);
 
   if (isFallback) {

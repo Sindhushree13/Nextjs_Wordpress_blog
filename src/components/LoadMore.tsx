@@ -1,9 +1,9 @@
 import React from "react";
-import { getPostList } from "../../lib/posts";
+import { getPostList } from "../lib/posts";
 import { useState } from "react";
-import "../../styles/main.css"
+import "../../styles/Home.module.css"
 
-export default function LoadMore({posts, setPosts, taxonomy = null}) {
+export default function LoadMore({posts, setPosts, taxonomy = null}:any) {
 
     let bT = posts.pageInfo.hasNextPage ? 'Load more posts' : 'No more posts to load';
     let bD = posts.pageInfo.hasNextPage ? false : true;
@@ -11,14 +11,14 @@ export default function LoadMore({posts, setPosts, taxonomy = null}) {
     const [buttonText, setButtonText] = useState(bT);
     const [buttonDisabled, setButtonDisabled] = useState(bD);
 
-    const handleOnclick = async (event) => {
+    const handleOnclick = async (event:any) => {
 
         setButtonText('Loading...');
         setButtonDisabled(true);
 
         const morePosts = await getPostList(posts.pageInfo.endCursor, taxonomy);
 
-        let updatedPosts = {
+        let updatedPosts:any = {
             pageInfo: {
 
             },
@@ -27,11 +27,11 @@ export default function LoadMore({posts, setPosts, taxonomy = null}) {
 
         updatedPosts.pageInfo = morePosts.pageInfo;
 
-        posts.nodes.map((node) => {
+        posts.nodes.map((node:any) => {
             updatedPosts.nodes.push(node);
         });
 
-        morePosts.nodes.map((node) => {
+        morePosts.nodes.map((node:any) => {
             updatedPosts.nodes.push(node);
         });
 
