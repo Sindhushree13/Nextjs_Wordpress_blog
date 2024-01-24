@@ -10,7 +10,7 @@ export async function getPostList(endCursor = null, taxonomy = null) {
 
     const query = {
         query: `query getAllPosts {
-            posts() {
+            posts {
               nodes {
                 date
                 slug
